@@ -17,23 +17,23 @@ const HomePage: React.FC = () => {
   const features = [
     {
       icon: <Star className="w-6 h-6" />,
-      title: 'Premium Quality',
-      description: 'Made with the finest ingredients and artisanal techniques',
+      title: 'Unique Handcrafted',
+      description: 'Each item is carefully crafted by talented artisans',
     },
     {
       icon: <Users className="w-6 h-6" />,
-      title: 'Expert Bakers',
-      description: 'Our talented bakers create unique and delicious treats',
+      title: 'Local Artisans',
+      description: 'Support local creators and their unique craftsmanship',
     },
     {
       icon: <Award className="w-6 h-6" />,
-      title: 'Award Winning',
-      description: 'Recognized for excellence in taste and presentation',
+      title: 'Quality Guaranteed',
+      description: 'Premium materials and exceptional workmanship',
     },
     {
       icon: <Truck className="w-6 h-6" />,
-      title: 'Fast Delivery',
-      description: 'Fresh delivery to your doorstep within hours',
+      title: 'Secure Shipping',
+      description: 'Careful packaging and reliable delivery worldwide',
     },
   ];
 
@@ -45,8 +45,8 @@ const HomePage: React.FC = () => {
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div className="absolute inset-0 z-0">
           <Image
-            src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=1920&h=1080&fit=crop"
-            alt="Delicious cakes"
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=1920&h=1080&fit=crop"
+            alt="Handcrafted items"
             fill
             className="object-cover"
             priority
@@ -59,9 +59,9 @@ const HomePage: React.FC = () => {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="sweet-title mb-6"
+            className="text-5xl md:text-7xl font-bold mb-6"
           >
-            SweetTreats
+            Handcrafted Haven
           </motion.h1>
           
           <motion.p
@@ -70,7 +70,7 @@ const HomePage: React.FC = () => {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl md:text-2xl mb-8 text-gray-100"
           >
-            Artisanal bakery creating delicious treats with love and the finest ingredients
+            Discover unique handcrafted treasures from talented artisans worldwide
           </motion.p>
           
           <motion.div
@@ -85,9 +85,9 @@ const HomePage: React.FC = () => {
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>
-            <Link href="/bakers">
+            <Link href="/artisans">
               <Button variant="secondary" size="lg" className="text-lg px-8 py-4">
-                Meet Our Bakers
+                Meet Our Artisans
               </Button>
             </Link>
           </motion.div>

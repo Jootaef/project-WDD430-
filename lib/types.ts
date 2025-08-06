@@ -5,26 +5,28 @@ export interface Product {
   price: number;
   category: ProductCategory;
   image: string;
-  ingredients: string[];
-  allergens: string[];
-  isVegan: boolean;
-  isGlutenFree: boolean;
+  materials: string[];
+  dimensions: string;
+  isHandmade: boolean;
+  isEcoFriendly: boolean;
   rating: number;
   reviewCount: number;
-  baker: Baker;
+  artisan: Artisan;
   customizations?: Customization[];
   available: boolean;
 }
 
 export type ProductCategory = 
-  | 'wedding-cakes'
-  | 'cupcakes'
-  | 'cookies'
-  | 'chocolates'
-  | 'vegan-desserts'
-  | 'pies';
+  | 'jewelry'
+  | 'pottery'
+  | 'textiles'
+  | 'leather'
+  | 'woodwork'
+  | 'glass'
+  | 'metalwork'
+  | 'paper';
 
-export interface Baker {
+export interface Artisan {
   id: string;
   name: string;
   avatar: string;
@@ -33,6 +35,7 @@ export interface Baker {
   reviewCount: number;
   specialties: ProductCategory[];
   experience: number; // years
+  location: string;
 }
 
 export interface Review {
@@ -90,8 +93,8 @@ export interface User {
   phone?: string;
   addresses: Address[];
   preferences: {
-    dietaryRestrictions: string[];
     favoriteCategories: ProductCategory[];
+    preferredArtisans: string[];
   };
 }
 

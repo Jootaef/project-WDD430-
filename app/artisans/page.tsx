@@ -9,13 +9,13 @@ import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
-import { bakers, products, categories } from '@/lib/data';
+import { artisans, products, categories } from '@/lib/data';
 
-const BakersPage: React.FC = () => {
-  const [selectedBaker, setSelectedBaker] = useState<string | null>(null);
+const ArtisansPage: React.FC = () => {
+  const [selectedArtisan, setSelectedArtisan] = useState<string | null>(null);
 
-  const getBakerProducts = (bakerId: string) => {
-    return products.filter(product => product.baker.id === bakerId);
+  const getArtisanProducts = (artisanId: string) => {
+    return products.filter(product => product.artisan.id === artisanId);
   };
 
   const getSpecialtyLabels = (specialties: string[]) => {
@@ -35,40 +35,40 @@ const BakersPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="sweet-title mb-4">Meet Our Expert Bakers</h1>
+          <h1 className="text-4xl md:text-5xl font-bold mb-4">Meet Our Talented Artisans</h1>
           <p className="text-gray-600 text-lg max-w-3xl mx-auto">
-            Our talented team of artisanal bakers brings years of experience and passion 
-            to create the most delicious treats. Each baker specializes in unique techniques 
-            and flavors that make our products truly special.
+            Discover the passionate creators behind our unique handcrafted items. Each artisan 
+            brings their own story, skills, and creativity to create one-of-a-kind pieces 
+            that you'll treasure forever.
           </p>
         </motion.div>
 
-        {/* Bakers Grid */}
+        {/* Artisans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
-          {bakers.map((baker, index) => (
-            <motion.div
-              key={baker.id}
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: index * 0.1 }}
-            >
-              <Card className="p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                <div className="relative mb-6">
-                  <Image
-                    src={baker.avatar}
-                    alt={baker.name}
-                    width={120}
-                    height={120}
-                    className="rounded-full mx-auto border-4 border-primary"
-                  />
-                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                    <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                      {baker.experience}+ years
+          {artisans.map((artisan, index) => (
+                          <motion.div
+                key={artisan.id}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: index * 0.1 }}
+              >
+                <Card className="p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                  <div className="relative mb-6">
+                    <Image
+                      src={artisan.avatar}
+                      alt={artisan.name}
+                      width={120}
+                      height={120}
+                      className="rounded-full mx-auto border-4 border-primary"
+                    />
+                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                      <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                        {artisan.experience}+ years
+                      </div>
                     </div>
                   </div>
-                </div>
 
-                <h3 className="text-xl font-semibold mb-2">{baker.name}</h3>
+                  <h3 className="text-xl font-semibold mb-2">{artisan.name}</h3>
                 
                 <div className="flex items-center justify-center mb-3">
                   <div className="flex items-center">

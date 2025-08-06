@@ -8,16 +8,15 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FF6B9D", // Sweet pink
-        secondary: "#FFF5E6", // Soft cream
+        primary: "#8B4513", // Warm brown
+        secondary: "#F5F5DC", // Beige
         accent: {
-          orange: "#FFB347", // Pastel orange
+          orange: "#FFB347", // Terracotta
           blue: "#87CEEB", // Sky blue
-          lavender: "#DDA0DD", // Lavender
+          green: "#90EE90", // Sage green
         },
       },
       fontFamily: {
-        sweet: ["Dancing Script", "cursive"],
         body: ["Inter", "sans-serif"],
       },
       animation: {

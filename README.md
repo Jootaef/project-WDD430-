@@ -1,17 +1,17 @@
-# SweetTreats - Artisanal Bakery
+# Handcrafted Haven - Artisan Marketplace
 
-A modern, responsive web application for an artisanal bakery showcasing delicious treats, expert bakers, and seamless ordering experience.
+A modern, responsive web application connecting talented artisans with conscious consumers worldwide. Discover unique handcrafted treasures that tell stories and support local communities.
 
-## 🎂 Features
+## 🎨 Features
 
 ### Core Functionality
 
-- **Product Catalog**: Browse cakes, cupcakes, cookies, chocolates, and more
-- **Advanced Filtering**: Filter by category, price, dietary restrictions (vegan, gluten-free)
-- **Search & Sort**: Find products by name, description, or baker
+- **Product Catalog**: Browse jewelry, pottery, textiles, leather goods, and more
+- **Advanced Filtering**: Filter by category, price, materials, and artisan
+- **Search & Sort**: Find products by name, description, or artisan
 - **Shopping Cart**: Add items, manage quantities, and checkout
 - **Wishlist**: Save favorite products for later
-- **Product Details**: View ingredients, allergens, customizations, and reviews
+- **Product Details**: View materials, dimensions, customizations, and reviews
 
 ### User Experience
 
@@ -20,27 +20,27 @@ A modern, responsive web application for an artisanal bakery showcasing deliciou
 - **Real-time Updates**: Toast notifications for user feedback
 - **Persistent State**: Cart and wishlist saved in localStorage
 
-### Baker Profiles
+### Artisan Profiles
 
-- **Expert Showcase**: Detailed profiles of our talented bakers
-- **Specialties**: View baker specialties and experience
-- **Product Gallery**: See all products by each baker
+- **Creator Showcase**: Detailed profiles of our talented artisans
+- **Specialties**: View artisan specialties and experience
+- **Product Gallery**: See all products by each artisan
 - **Ratings & Reviews**: Customer feedback and ratings
 
 ## 🎨 Design System
 
 ### Color Palette
 
-- **Primary**: #FF6B9D (Sweet Pink)
-- **Secondary**: #FFF5E6 (Soft Cream)
+- **Primary**: #8B4513 (Warm Brown)
+- **Secondary**: #F5F5DC (Beige)
 - **Accent Colors**:
-  - Orange: #FFB347 (Pastel Orange)
+  - Orange: #FFB347 (Terracotta)
   - Blue: #87CEEB (Sky Blue)
-  - Lavender: #DDA0DD (Lavender)
+  - Green: #90EE90 (Sage Green)
 
 ### Typography
 
-- **Display**: Dancing Script (for brand elements)
+- **Display**: Inter (for brand elements)
 - **Body**: Inter (for content)
 
 ## 🛠️ Tech Stack
@@ -57,14 +57,14 @@ A modern, responsive web application for an artisanal bakery showcasing deliciou
 ## 📁 Project Structure
 
 ```
-sweet-treats/
+handcrafted-haven/
 ├── app/                    # Next.js App Router
 │   ├── globals.css        # Global styles
 │   ├── layout.tsx         # Root layout
 │   ├── page.tsx           # Homepage
 │   ├── products/          # Product pages
 │   ├── cart/              # Shopping cart
-│   ├── bakers/            # Baker profiles
+│   ├── artisans/          # Artisan profiles
 │   ├── contact/           # Contact form
 │   └── wishlist/          # User wishlist
 ├── components/            # Reusable components
@@ -91,7 +91,7 @@ sweet-treats/
 
    ```bash
    git clone <repository-url>
-   cd sweet-treats
+   cd handcrafted-haven
    ```
 
 2. **Install dependencies**

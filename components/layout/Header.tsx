@@ -15,7 +15,7 @@ const Header: React.FC = () => {
   const navItems = [
     { href: '/', label: 'Home' },
     { href: '/products', label: 'Products' },
-    { href: '/bakers', label: 'Our Bakers' },
+    { href: '/artisans', label: 'Artisans' },
     { href: '/about', label: 'About' },
     { href: '/contact', label: 'Contact' },
   ];
@@ -28,9 +28,9 @@ const Header: React.FC = () => {
           <Link href="/" className="flex items-center space-x-2">
             <motion.div
               whileHover={{ scale: 1.1 }}
-              className="text-2xl font-sweet text-primary"
+              className="text-2xl font-bold text-primary"
             >
-              SweetTreats
+              Handcrafted Haven
             </motion.div>
           </Link>
 

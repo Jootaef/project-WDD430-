@@ -1,7 +1,7 @@
 {
-  "name": "sweet-treats",
+  "name": "handcrafted-haven",
   "version": "1.0.0",
-  "description": "SweetTreats - Pastelería Artesanal",
+  "description": "Handcrafted Haven - Plataforma de Artesanos y Productos Artesanales",
   "main": "index.js",
   "scripts": {
     "dev": "next dev",

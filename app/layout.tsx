@@ -6,9 +6,9 @@ import { Toaster } from 'react-hot-toast'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'SweetTreats - Artisanal Bakery',
-  description: 'Discover delicious artisanal cakes, cupcakes, cookies, and chocolates made with love and the finest ingredients.',
-  keywords: 'bakery, cakes, cupcakes, cookies, chocolates, artisanal, desserts',
+  title: 'Handcrafted Haven - Artisan Marketplace',
+  description: 'Discover unique handcrafted items from talented artisans. Shop handmade jewelry, pottery, textiles, and more.',
+  keywords: 'handcrafted, artisans, handmade, marketplace, crafts, jewelry, pottery, textiles, sustainable',
 }
 
 export default function RootLayout({

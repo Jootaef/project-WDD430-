@@ -53,14 +53,14 @@ const ProductCard: React.FC<ProductCardProps> = ({
         
         {/* Badges */}
         <div className="absolute top-2 left-2 flex flex-col gap-1">
-          {product.isVegan && (
-            <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-              Vegan
+          {product.isHandmade && (
+            <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
+              Handmade
             </span>
           )}
-          {product.isGlutenFree && (
-            <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
-              Gluten-Free
+          {product.isEcoFriendly && (
+            <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
+              Eco-Friendly
             </span>
           )}
         </div>
@@ -75,17 +75,17 @@ const ProductCard: React.FC<ProductCardProps> = ({
           />
         </button>
 
-        {/* Baker Info */}
+        {/* Artisan Info */}
         <div className="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg p-2">
           <div className="flex items-center space-x-2">
             <Image
-              src={product.baker.avatar}
-              alt={product.baker.name}
+              src={product.artisan.avatar}
+              alt={product.artisan.name}
               width={24}
               height={24}
               className="w-6 h-6 rounded-full"
             />
-            <span className="text-xs text-gray-600">{product.baker.name}</span>
+            <span className="text-xs text-gray-600">{product.artisan.name}</span>
           </div>
         </div>
       </div>
