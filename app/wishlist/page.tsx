@@ -124,17 +124,17 @@ const WishlistPage: React.FC = () => {
                     <Trash2 className="w-4 h-4" />
                   </button>
 
-                  {/* Baker Info */}
+                  {/* Artisan Info */}
                   <div className="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg p-2">
                     <div className="flex items-center space-x-2">
                       <Image
-                        src={product.baker.avatar}
-                        alt={product.baker.name}
+                        src={product.artisan.avatar}
+                        alt={product.artisan.name}
                         width={24}
                         height={24}
                         className="w-6 h-6 rounded-full"
                       />
-                      <span className="text-xs text-gray-600">{product.baker.name}</span>
+                      <span className="text-xs text-gray-600">{product.artisan.name}</span>
                     </div>
                   </div>
                 </div>

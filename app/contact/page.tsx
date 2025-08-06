@@ -200,7 +200,7 @@ const ContactPage: React.FC = () => {
                     <p className="font-semibold">Address</p>
                     <p className="text-gray-600">
                       123 Sweet Street<br />
-                      Bakery City, BC 12345
+                      Artisan District, AC 12345
                     </p>
                   </div>
                 </div>
@@ -270,7 +270,7 @@ const ContactPage: React.FC = () => {
               <div className="text-center text-gray-500">
                 <MapPin className="w-12 h-12 mx-auto mb-2" />
                 <p>Interactive Map Coming Soon</p>
-                <p className="text-sm">123 Sweet Street, Bakery City, BC 12345</p>
+                <p className="text-sm">123 Sweet Street, Artisan District, AC 12345</p>
               </div>
             </div>
           </Card>

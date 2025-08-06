@@ -105,7 +105,7 @@ const CartPage: React.FC = () => {
                     
                     <div className="flex-1">
                       <h3 className="font-semibold text-gray-800">{item.product.name}</h3>
-                      <p className="text-sm text-gray-600 mb-2">{item.product.baker.name}</p>
+                      <p className="text-sm text-gray-600 mb-2">{item.product.artisan.name}</p>
                       <div className="flex items-center space-x-2">
                         <span className="text-lg font-bold text-primary">
                           ${item.product.price}

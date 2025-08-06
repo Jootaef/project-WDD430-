@@ -128,18 +128,18 @@ const ProductDetailPage: React.FC = () => {
                 </span>
               </div>
 
-              {/* Baker Info */}
+              {/* Artisan Info */}
               <div className="flex items-center space-x-3 mb-6">
                 <Image
-                  src={product.baker.avatar}
-                  alt={product.baker.name}
+                  src={product.artisan.avatar}
+                  alt={product.artisan.name}
                   width={40}
                   height={40}
                   className="rounded-full"
                 />
                 <div>
-                  <p className="font-semibold">{product.baker.name}</p>
-                  <p className="text-sm text-gray-600">{product.baker.experience} years experience</p>
+                  <p className="font-semibold">{product.artisan.name}</p>
+                  <p className="text-sm text-gray-600">{product.artisan.experience} years experience</p>
                 </div>
               </div>
             </div>

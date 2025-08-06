@@ -27,7 +27,7 @@ const ProductsPage: React.FC = () => {
       filtered = filtered.filter(product =>
         product.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
         product.description.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        product.baker.name.toLowerCase().includes(searchTerm.toLowerCase())
+        product.artisan.name.toLowerCase().includes(searchTerm.toLowerCase())
       );
     }
 
