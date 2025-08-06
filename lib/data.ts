@@ -1,4 +1,4 @@
-import { Product, Artisan, Review, ProductCategory } from './types';
+import { Product, Artisan, Review, ProductCategory, Category } from './types';
 
 export const artisans: Artisan[] = [
   {
@@ -159,7 +159,7 @@ export const products: Product[] = [
   },
 ];
 
-export const categories: ProductCategory[] = [
+export const categories: Category[] = [
   { value: 'jewelry', label: 'Jewelry', icon: '💎' },
   { value: 'pottery', label: 'Pottery & Ceramics', icon: '🏺' },
   { value: 'textiles', label: 'Textiles & Scarves', icon: '🧣' },

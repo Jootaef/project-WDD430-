@@ -26,6 +26,12 @@ export type ProductCategory =
   | 'metalwork'
   | 'paper';
 
+export interface Category {
+  value: ProductCategory;
+  label: string;
+  icon: string;
+}
+
 export interface Artisan {
   id: string;
   name: string;

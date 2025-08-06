@@ -46,37 +46,37 @@ const ArtisansPage: React.FC = () => {
         {/* Artisans Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
           {artisans.map((artisan, index) => (
-                          <motion.div
-                key={artisan.id}
-                initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <Card className="p-6 text-center hover:shadow-xl transition-shadow duration-300">
-                  <div className="relative mb-6">
-                    <Image
-                      src={artisan.avatar}
-                      alt={artisan.name}
-                      width={120}
-                      height={120}
-                      className="rounded-full mx-auto border-4 border-primary"
-                    />
-                    <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
-                      <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
-                        {artisan.experience}+ years
-                      </div>
+            <motion.div
+              key={artisan.id}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: index * 0.1 }}
+            >
+              <Card className="p-6 text-center hover:shadow-xl transition-shadow duration-300">
+                <div className="relative mb-6">
+                  <Image
+                    src={artisan.avatar}
+                    alt={artisan.name}
+                    width={120}
+                    height={120}
+                    className="rounded-full mx-auto border-4 border-primary"
+                  />
+                  <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2">
+                    <div className="bg-primary text-white px-3 py-1 rounded-full text-sm font-medium">
+                      {artisan.experience}+ years
                     </div>
                   </div>
+                </div>
 
-                  <h3 className="text-xl font-semibold mb-2">{artisan.name}</h3>
-                
+                <h3 className="text-xl font-semibold mb-2">{artisan.name}</h3>
+              
                 <div className="flex items-center justify-center mb-3">
                   <div className="flex items-center">
                     {[...Array(5)].map((_, i) => (
                       <Star
                         key={i}
                         className={`w-4 h-4 ${
-                          i < Math.floor(baker.rating)
+                          i < Math.floor(artisan.rating)
                             ? 'text-yellow-400 fill-current'
                             : 'text-gray-300'
                         }`}
@@ -84,18 +84,18 @@ const ArtisansPage: React.FC = () => {
                     ))}
                   </div>
                   <span className="text-sm text-gray-500 ml-2">
-                    ({baker.reviewCount} reviews)
+                    ({artisan.reviewCount} reviews)
                   </span>
                 </div>
 
                 <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                  {baker.bio}
+                  {artisan.bio}
                 </p>
 
                 <div className="mb-4">
                   <h4 className="font-semibold text-gray-800 mb-2">Specialties</h4>
                   <div className="flex flex-wrap gap-2 justify-center">
-                    {getSpecialtyLabels(baker.specialties).map((specialty) => (
+                    {getSpecialtyLabels(artisan.specialties).map((specialty) => (
                       <span
                         key={specialty}
                         className="bg-accent-lavender text-white px-3 py-1 rounded-full text-xs"
@@ -107,15 +107,15 @@ const ArtisansPage: React.FC = () => {
                 </div>
 
                 <Button
-                  onClick={() => setSelectedBaker(selectedBaker === baker.id ? null : baker.id)}
+                  onClick={() => setSelectedArtisan(selectedArtisan === artisan.id ? null : artisan.id)}
                   className="w-full"
                 >
                   View Products
                 </Button>
               </Card>
 
-              {/* Baker's Products */}
-              {selectedBaker === baker.id && (
+              {/* Artisan's Products */}
+              {selectedArtisan === artisan.id && (
                 <motion.div
                   initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
@@ -124,10 +124,10 @@ const ArtisansPage: React.FC = () => {
                 >
                   <Card className="p-6">
                     <h4 className="text-lg font-semibold mb-4">
-                      {baker.name}'s Products
+                      {artisan.name}'s Products
                     </h4>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                      {getBakerProducts(baker.id).map((product) => (
+                      {getArtisanProducts(artisan.id).map((product) => (
                         <div
                           key={product.id}
                           className="flex items-center space-x-3 p-3 bg-gray-50 rounded-lg"
@@ -164,13 +164,13 @@ const ArtisansPage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="bg-white rounded-2xl p-8 mb-16"
         >
-          <h2 className="section-title mb-8">Our Baking Excellence</h2>
+          <h2 className="section-title mb-8">Our Artisan Excellence</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
-                {bakers.length}
+                {artisans.length}
               </div>
-              <p className="text-gray-600">Expert Bakers</p>
+              <p className="text-gray-600">Expert Artisans</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
@@ -180,13 +180,13 @@ const ArtisansPage: React.FC = () => {
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
-                {bakers.reduce((sum, baker) => sum + baker.experience, 0)}+
+                {artisans.reduce((sum, artisan) => sum + artisan.experience, 0)}+
               </div>
               <p className="text-gray-600">Years Experience</p>
             </div>
             <div className="text-center">
               <div className="text-4xl font-bold text-primary mb-2">
-                {bakers.reduce((sum, baker) => sum + baker.reviewCount, 0)}+
+                {artisans.reduce((sum, artisan) => sum + artisan.reviewCount, 0)}+
               </div>
               <p className="text-gray-600">Happy Customers</p>
             </div>
@@ -199,9 +199,9 @@ const ArtisansPage: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="bg-gradient-to-r from-primary to-accent-orange text-white rounded-2xl p-8 text-center"
         >
-          <h2 className="text-3xl font-bold mb-4">Join Our Baking Team</h2>
+          <h2 className="text-3xl font-bold mb-4">Join Our Artisan Team</h2>
           <p className="text-xl mb-6 opacity-90">
-            Are you a passionate baker looking to create amazing treats? 
+            Are you a passionate artisan looking to create amazing handcrafted items? 
             We're always looking for talented individuals to join our team.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -222,4 +222,4 @@ const ArtisansPage: React.FC = () => {
   );
 };
 
-export default BakersPage; 
+export default ArtisansPage; 

@@ -142,7 +142,7 @@ const HomePage: React.FC = () => {
           >
             <h2 className="section-title">Featured Products</h2>
             <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-              Our most popular and highly-rated treats, handcrafted by our expert bakers
+              Our most popular and highly-rated handcrafted items, created by our expert artisans
             </p>
           </motion.div>
 
@@ -222,7 +222,7 @@ const HomePage: React.FC = () => {
               Ready to Taste the Difference?
             </h2>
             <p className="text-xl mb-8 opacity-90">
-              Order now and experience the magic of artisanal baking
+              Order now and experience the magic of artisanal craftsmanship
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/products">
