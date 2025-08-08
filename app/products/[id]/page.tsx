@@ -85,14 +85,14 @@ const ProductDetailPage: React.FC = () => {
               
               {/* Badges */}
               <div className="absolute top-4 left-4 flex flex-col gap-2">
-                {product.isVegan && (
+                {product.isEcoFriendly && (
                   <span className="bg-green-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    Vegan
+                    Eco-Friendly
                   </span>
                 )}
-                {product.isGlutenFree && (
-                  <span className="bg-blue-500 text-white px-3 py-1 rounded-full text-sm font-medium">
-                    Gluten-Free
+                {product.isHandmade && (
+                  <span className="bg-orange-500 text-white px-3 py-1 rounded-full text-sm font-medium">
+                    Handmade
                   </span>
                 )}
               </div>
@@ -240,37 +240,41 @@ const ProductDetailPage: React.FC = () => {
           transition={{ delay: 0.3 }}
           className="mt-16"
         >
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Ingredients */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Ingredients</h3>
-              <div className="grid grid-cols-2 gap-2">
-                {product.ingredients.map((ingredient, index) => (
-                  <div key={index} className="flex items-center space-x-2">
-                    <div className="w-2 h-2 bg-primary rounded-full"></div>
-                    <span className="text-gray-700">{ingredient}</span>
-                  </div>
-                ))}
-              </div>
-            </Card>
+                     <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+             {/* Materials */}
+             <Card className="p-6">
+               <h3 className="text-xl font-semibold mb-4">Materials</h3>
+               <div className="grid grid-cols-2 gap-2">
+                 {product.materials.map((material, index) => (
+                   <div key={index} className="flex items-center space-x-2">
+                     <div className="w-2 h-2 bg-primary rounded-full"></div>
+                     <span className="text-gray-700">{material}</span>
+                   </div>
+                 ))}
+               </div>
+             </Card>
 
-            {/* Allergens */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Allergens</h3>
-              <div className="space-y-2">
-                {product.allergens.length > 0 ? (
-                  product.allergens.map((allergen, index) => (
-                    <div key={index} className="flex items-center space-x-2">
-                      <div className="w-2 h-2 bg-red-500 rounded-full"></div>
-                      <span className="text-gray-700">{allergen}</span>
-                    </div>
-                  ))
-                ) : (
-                  <p className="text-gray-500">No allergens detected</p>
-                )}
-              </div>
-            </Card>
-          </div>
+             {/* Product Details */}
+             <Card className="p-6">
+               <h3 className="text-xl font-semibold mb-4">Product Details</h3>
+               <div className="space-y-3">
+                 <div className="flex justify-between">
+                   <span className="text-gray-600">Dimensions:</span>
+                   <span className="font-medium">{product.dimensions}</span>
+                 </div>
+                 <div className="flex justify-between">
+                   <span className="text-gray-600">Category:</span>
+                   <span className="font-medium capitalize">{product.category}</span>
+                 </div>
+                 <div className="flex justify-between">
+                   <span className="text-gray-600">Availability:</span>
+                   <span className={`font-medium ${product.available ? 'text-green-600' : 'text-red-600'}`}>
+                     {product.available ? 'In Stock' : 'Out of Stock'}
+                   </span>
+                 </div>
+               </div>
+             </Card>
+           </div>
         </motion.div>
 
         {/* Reviews */}

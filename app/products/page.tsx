@@ -16,8 +16,8 @@ const ProductsPage: React.FC = () => {
   const [sortBy, setSortBy] = useState<'name' | 'price' | 'rating'>('name');
   const [sortOrder, setSortOrder] = useState<'asc' | 'desc'>('asc');
   const [priceRange, setPriceRange] = useState<[number, number]>([0, 500]);
-  const [showVeganOnly, setShowVeganOnly] = useState(false);
-  const [showGlutenFreeOnly, setShowGlutenFreeOnly] = useState(false);
+  const [showEcoFriendlyOnly, setShowEcoFriendlyOnly] = useState(false);
+  const [showHandmadeOnly, setShowHandmadeOnly] = useState(false);
 
   const filteredProducts = useMemo(() => {
     let filtered = products;
@@ -41,13 +41,13 @@ const ProductsPage: React.FC = () => {
       product.price >= priceRange[0] && product.price <= priceRange[1]
     );
 
-    // Dietary restrictions
-    if (showVeganOnly) {
-      filtered = filtered.filter(product => product.isVegan);
+    // Product characteristics
+    if (showEcoFriendlyOnly) {
+      filtered = filtered.filter(product => product.isEcoFriendly);
     }
 
-    if (showGlutenFreeOnly) {
-      filtered = filtered.filter(product => product.isGlutenFree);
+    if (showHandmadeOnly) {
+      filtered = filtered.filter(product => product.isHandmade);
     }
 
     // Sorting
@@ -81,7 +81,7 @@ const ProductsPage: React.FC = () => {
     });
 
     return filtered;
-  }, [searchTerm, selectedCategory, sortBy, sortOrder, priceRange, showVeganOnly, showGlutenFreeOnly]);
+  }, [searchTerm, selectedCategory, sortBy, sortOrder, priceRange, showEcoFriendlyOnly, showHandmadeOnly]);
 
   return (
     <div className="min-h-screen bg-secondary">
@@ -178,20 +178,20 @@ const ProductsPage: React.FC = () => {
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                checked={showVeganOnly}
-                onChange={(e) => setShowVeganOnly(e.target.checked)}
+                checked={showEcoFriendlyOnly}
+                onChange={(e) => setShowEcoFriendlyOnly(e.target.checked)}
                 className="rounded text-primary focus:ring-primary"
               />
-              <span className="text-sm">Vegan Only</span>
+              <span className="text-sm">Eco-Friendly Only</span>
             </label>
             <label className="flex items-center space-x-2">
               <input
                 type="checkbox"
-                checked={showGlutenFreeOnly}
-                onChange={(e) => setShowGlutenFreeOnly(e.target.checked)}
+                checked={showHandmadeOnly}
+                onChange={(e) => setShowHandmadeOnly(e.target.checked)}
                 className="rounded text-primary focus:ring-primary"
               />
-              <span className="text-sm">Gluten-Free Only</span>
+              <span className="text-sm">Handmade Only</span>
             </label>
           </div>
         </motion.div>
@@ -242,8 +242,8 @@ const ProductsPage: React.FC = () => {
                 setSearchTerm('');
                 setSelectedCategory('all');
                 setPriceRange([0, 500]);
-                setShowVeganOnly(false);
-                setShowGlutenFreeOnly(false);
+                setShowEcoFriendlyOnly(false);
+                setShowHandmadeOnly(false);
               }}
             >
               Clear Filters

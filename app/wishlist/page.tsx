@@ -104,14 +104,14 @@ const WishlistPage: React.FC = () => {
                   
                   {/* Badges */}
                   <div className="absolute top-2 left-2 flex flex-col gap-1">
-                    {product.isVegan && (
+                    {product.isEcoFriendly && (
                       <span className="bg-green-500 text-white text-xs px-2 py-1 rounded-full">
-                        Vegan
+                        Eco-Friendly
                       </span>
                     )}
-                    {product.isGlutenFree && (
-                      <span className="bg-blue-500 text-white text-xs px-2 py-1 rounded-full">
-                        Gluten-Free
+                    {product.isHandmade && (
+                      <span className="bg-orange-500 text-white text-xs px-2 py-1 rounded-full">
+                        Handmade
                       </span>
                     )}
                   </div>
