@@ -4,7 +4,7 @@ export const artisans: Artisan[] = [
   {
     id: 'artisan-1',
     name: 'Maria Rodriguez',
-    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+    avatar: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=150&h=150&fit=crop&crop=face',
     bio: 'Master jewelry designer with 15 years of experience creating unique handcrafted pieces using traditional techniques.',
     rating: 4.9,
     reviewCount: 127,
@@ -34,6 +34,28 @@ export const artisans: Artisan[] = [
     experience: 8,
     location: 'Kyoto, Japan',
   },
+  {
+    id: 'artisan-4',
+    name: 'Elena Petrov',
+    avatar: 'https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face',
+    bio: 'Expert glassblower creating stunning decorative pieces and functional art with centuries-old techniques.',
+    rating: 4.9,
+    reviewCount: 203,
+    specialties: ['glass'],
+    experience: 18,
+    location: 'St. Petersburg, Russia',
+  },
+  {
+    id: 'artisan-5',
+    name: 'Carlos Mendez',
+    avatar: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face',
+    bio: 'Master woodworker specializing in custom furniture and decorative pieces using sustainable hardwoods.',
+    rating: 4.8,
+    reviewCount: 167,
+    specialties: ['woodwork'],
+    experience: 22,
+    location: 'Buenos Aires, Argentina',
+  }
 ];
 
 export const products: Product[] = [
@@ -43,7 +65,7 @@ export const products: Product[] = [
     description: 'A stunning handcrafted silver necklace with intricate filigree work and natural gemstone pendant.',
     price: 450,
     category: 'jewelry',
-    image: 'https://images.unsplash.com/photo-1515562141207-7a88fb7ce3b7?w=600&h=400&fit=crop',
+    image: 'https://images.unsplash.com/photo-1573408301185-9146fe634ad0?w=600&h=400&fit=crop',
     materials: ['Sterling silver', 'Natural gemstone', 'Handcrafted filigree'],
     dimensions: '18" chain length',
     isHandmade: true,
@@ -150,13 +172,53 @@ export const products: Product[] = [
     isEcoFriendly: true,
     rating: 4.8,
     reviewCount: 52,
-    artisan: artisans[2],
+    artisan: artisans[4],
     available: true,
     customizations: [
       { id: 'custom-11', name: 'Custom Size', price: 30, description: 'Adjustable dimensions' },
       { id: 'custom-12', name: 'Wood Type', price: 40, description: 'Choose wood species' },
     ],
   },
+  {
+    id: 'product-7',
+    name: 'Blown Glass Vase',
+    description: 'Exquisite hand-blown glass vase with unique bubbles and organic form, perfect for flower arrangements.',
+    price: 180,
+    category: 'glass',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+    materials: ['Soda-lime glass', 'Hand-blown', 'Unique bubbles'],
+    dimensions: '10" height x 6" diameter',
+    isHandmade: true,
+    isEcoFriendly: true,
+    rating: 4.9,
+    reviewCount: 89,
+    artisan: artisans[3],
+    available: true,
+    customizations: [
+      { id: 'custom-13', name: 'Custom Color', price: 35, description: 'Choose glass color' },
+      { id: 'custom-14', name: 'Size Variation', price: 45, description: 'Adjust dimensions' },
+    ],
+  },
+  {
+    id: 'product-8',
+    name: 'Handcrafted Metal Wall Art',
+    description: 'Stunning metal wall sculpture created through traditional blacksmithing techniques.',
+    price: 320,
+    category: 'metalwork',
+    image: 'https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=600&h=400&fit=crop',
+    materials: ['Forged steel', 'Hand-hammered', 'Natural patina'],
+    dimensions: '24" x 18"',
+    isHandmade: true,
+    isEcoFriendly: true,
+    rating: 4.7,
+    reviewCount: 41,
+    artisan: artisans[4],
+    available: true,
+    customizations: [
+      { id: 'custom-15', name: 'Custom Design', price: 80, description: 'Personalized pattern' },
+      { id: 'custom-16', name: 'Size Adjustment', price: 60, description: 'Modify dimensions' },
+    ],
+  }
 ];
 
 export const categories: Category[] = [

@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
 import { motion } from 'framer-motion';
 import { Star, ShoppingCart, Heart } from 'lucide-react';
 import { Product } from '@/lib/types';
@@ -43,11 +42,9 @@ const ProductCard: React.FC<ProductCardProps> = ({
   return (
     <Card className="group">
       <div className="relative overflow-hidden">
-        <Image
+        <img
           src={product.image}
           alt={product.name}
-          width={400}
-          height={300}
           className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
         />
         
@@ -78,12 +75,10 @@ const ProductCard: React.FC<ProductCardProps> = ({
         {/* Artisan Info */}
         <div className="absolute bottom-2 left-2 bg-white bg-opacity-90 rounded-lg p-2">
           <div className="flex items-center space-x-2">
-            <Image
+            <img
               src={product.artisan.avatar}
               alt={product.artisan.name}
-              width={24}
-              height={24}
-              className="w-6 h-6 rounded-full"
+              className="w-6 h-6 rounded-full object-cover"
             />
             <span className="text-xs text-gray-600">{product.artisan.name}</span>
           </div>
