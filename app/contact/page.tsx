@@ -2,40 +2,88 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Clock, Send, CheckCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Clock, MessageCircle, Send, CheckCircle } from 'lucide-react';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import Button from '@/components/ui/Button';
-import Card from '@/components/ui/Card';
-import toast from 'react-hot-toast';
+import { useForm } from 'react-hook-form';
+
+interface ContactForm {
+  name: string;
+  email: string;
+  subject: string;
+  message: string;
+}
 
 const ContactPage: React.FC = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
+  const { register, handleSubmit, reset, formState: { errors } } = useForm<ContactForm>();
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const onSubmit = async (data: ContactForm) => {
     setIsSubmitting(true);
-    
-    // Simulate form submission
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setFormData({ name: '', email: '', subject: '', message: '' });
-      toast.success('Message sent successfully! We\'ll get back to you soon.');
-    }, 2000);
+    // Simulate API call
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    console.log('Contact form submitted:', data);
+    setIsSubmitted(true);
+    reset();
+    setIsSubmitting(false);
   };
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
-    setFormData(prev => ({
-      ...prev,
-      [e.target.name]: e.target.value
-    }));
-  };
+  const faqs = [
+    {
+      question: "How do I become an artisan on Handcrafted Haven?",
+      answer: "To become an artisan, you'll need to submit an application through our website. We review each application carefully to ensure quality and authenticity of handcrafted items."
+    },
+    {
+      question: "What types of products do you accept?",
+      answer: "We accept a wide variety of handcrafted items including jewelry, pottery, textiles, leather goods, woodwork, glass art, metalwork, and paper crafts. All items must be handmade and meet our quality standards."
+    },
+    {
+      question: "How does shipping work?",
+      answer: "We offer free shipping on all orders over $50. Standard shipping takes 3-5 business days, while express shipping (1-2 business days) is available for an additional fee."
+    },
+    {
+      question: "What is your return policy?",
+      answer: "We offer a 30-day return policy for all items. If you're not satisfied with your purchase, you can return it for a full refund or exchange. Custom items may have different return terms."
+    },
+    {
+      question: "How do I track my order?",
+      answer: "Once your order ships, you'll receive a tracking number via email. You can also track your order status in your account dashboard."
+    },
+    {
+      question: "Do you ship internationally?",
+      answer: "Yes, we ship to most countries worldwide. International shipping rates and delivery times vary by location. You can see shipping options during checkout."
+    }
+  ];
+
+  const contactInfo = [
+    {
+      icon: <Mail className="w-6 h-6" />,
+      title: "Email Us",
+      details: ["hello@handcraftedhaven.com", "support@handcraftedhaven.com"],
+      action: "Send Email"
+    },
+    {
+      icon: <Phone className="w-6 h-6" />,
+      title: "Call Us",
+      details: ["+1 (555) 123-4567", "Mon-Fri: 9AM-6PM EST"],
+      action: "Call Now"
+    },
+    {
+      icon: <MapPin className="w-6 h-6" />,
+      title: "Visit Us",
+      details: ["123 Artisan Street", "Craft District, NY 10001"],
+      action: "Get Directions"
+    },
+    {
+      icon: <Clock className="w-6 h-6" />,
+      title: "Business Hours",
+      details: ["Monday - Friday: 9AM-6PM", "Saturday: 10AM-4PM", "Sunday: Closed"],
+      action: "Schedule Appointment"
+    }
+  ];
 
   return (
     <div className="min-h-screen bg-secondary">
@@ -44,13 +92,13 @@ const ContactPage: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Page Header */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="text-center mb-12"
         >
-          <h1 className="sweet-title mb-4">Contact Us</h1>
-          <p className="text-gray-600 text-lg max-w-2xl mx-auto">
-            Have questions about our products or need to place a custom order? 
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Get in Touch</h1>
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+            Have questions about our handcrafted treasures or want to join our artisan community? 
             We'd love to hear from you!
           </p>
         </motion.div>
@@ -58,84 +106,95 @@ const ContactPage: React.FC = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           {/* Contact Form */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.2 }}
+            className="bg-white rounded-lg shadow-lg p-8"
           >
-            <Card className="p-8">
-              <h2 className="text-2xl font-semibold mb-6">Send us a Message</h2>
-              
-              <form onSubmit={handleSubmit} className="space-y-6">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <h2 className="text-2xl font-semibold text-gray-900 mb-6">Send us a Message</h2>
+            
+            {isSubmitted ? (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="text-center py-8"
+              >
+                <CheckCircle className="w-16 h-16 text-green-500 mx-auto mb-4" />
+                <h3 className="text-xl font-semibold text-gray-900 mb-2">Message Sent!</h3>
+                <p className="text-gray-600 mb-4">
+                  Thank you for reaching out. We'll get back to you within 24 hours.
+                </p>
+                <Button onClick={() => setIsSubmitted(false)}>
+                  Send Another Message
+                </Button>
+              </motion.div>
+            ) : (
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
-                      Name *
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
+                      First Name *
                     </label>
                     <input
                       type="text"
-                      id="name"
-                      name="name"
-                      value={formData.name}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      {...register('name', { required: 'Name is required' })}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="Your name"
                     />
+                    {errors.name && (
+                      <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+                    )}
                   </div>
                   
                   <div>
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                    <label className="block text-sm font-medium text-gray-700 mb-2">
                       Email *
                     </label>
                     <input
                       type="email"
-                      id="email"
-                      name="email"
-                      value={formData.email}
-                      onChange={handleChange}
-                      required
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                      {...register('email', { 
+                        required: 'Email is required',
+                        pattern: {
+                          value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                          message: 'Invalid email address'
+                        }
+                      })}
+                      className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                       placeholder="your@email.com"
                     />
+                    {errors.email && (
+                      <p className="text-red-500 text-sm mt-1">{errors.email.message}</p>
+                    )}
                   </div>
                 </div>
 
                 <div>
-                  <label htmlFor="subject" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Subject *
                   </label>
-                  <select
-                    id="subject"
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                  >
-                    <option value="">Select a subject</option>
-                    <option value="general">General Inquiry</option>
-                    <option value="custom-order">Custom Order</option>
-                    <option value="wedding-cake">Wedding Cake</option>
-                    <option value="allergies">Allergies & Dietary</option>
-                    <option value="delivery">Delivery Questions</option>
-                    <option value="feedback">Feedback</option>
-                  </select>
+                  <input
+                    type="text"
+                    {...register('subject', { required: 'Subject is required' })}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="What's this about?"
+                  />
+                  {errors.subject && (
+                    <p className="text-red-500 text-sm mt-1">{errors.subject.message}</p>
+                  )}
                 </div>
 
                 <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
                     Message *
                   </label>
                   <textarea
-                    id="message"
-                    name="message"
-                    value={formData.message}
-                    onChange={handleChange}
-                    required
-                    rows={6}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
-                    placeholder="Tell us about your inquiry..."
+                    {...register('message', { required: 'Message is required' })}
+                    rows={5}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                    placeholder="Tell us more about your inquiry..."
                   />
+                  {errors.message && (
+                    <p className="text-red-500 text-sm mt-1">{errors.message.message}</p>
+                  )}
                 </div>
 
                 <Button
@@ -146,7 +205,7 @@ const ContactPage: React.FC = () => {
                 >
                   {isSubmitting ? (
                     <>
-                      <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white mr-2"></div>
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
                       Sending...
                     </>
                   ) : (
@@ -157,123 +216,130 @@ const ContactPage: React.FC = () => {
                   )}
                 </Button>
               </form>
-            </Card>
+            )}
           </motion.div>
 
           {/* Contact Information */}
           <motion.div
-            initial={{ opacity: 0, x: 30 }}
+            initial={{ opacity: 0, x: 20 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.3 }}
             className="space-y-6"
           >
-            {/* Contact Details */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-6">Get in Touch</h3>
-              
+            <div>
+              <h2 className="text-2xl font-semibold text-gray-900 mb-6">Contact Information</h2>
               <div className="space-y-4">
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary text-white p-3 rounded-full">
-                    <Phone className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Phone</p>
-                    <p className="text-gray-600">(555) 123-4567</p>
-                  </div>
-                </div>
+                {contactInfo.map((info, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: index * 0.1 }}
+                    className="bg-white rounded-lg p-4 shadow-md"
+                  >
+                    <div className="flex items-start gap-4">
+                      <div className="bg-primary text-white p-3 rounded-lg">
+                        {info.icon}
+                      </div>
+                      <div className="flex-1">
+                        <h3 className="font-semibold text-gray-900 mb-2">{info.title}</h3>
+                        {info.details.map((detail, detailIndex) => (
+                          <p key={detailIndex} className="text-gray-600 text-sm mb-1">
+                            {detail}
+                          </p>
+                        ))}
+                        <Button variant="outline" size="sm" className="mt-2">
+                          {info.action}
+                        </Button>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
+              </div>
+            </div>
 
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary text-white p-3 rounded-full">
-                    <Mail className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Email</p>
-                    <p className="text-gray-600">hello@sweettreats.com</p>
-                  </div>
+            {/* Business Hours */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="bg-white rounded-lg p-6 shadow-md"
+            >
+              <h3 className="text-lg font-semibold text-gray-900 mb-4">Business Hours</h3>
+              <div className="space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Monday - Friday</span>
+                  <span className="font-medium">9:00 AM - 6:00 PM EST</span>
                 </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary text-white p-3 rounded-full">
-                    <MapPin className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Address</p>
-                    <p className="text-gray-600">
-                      123 Sweet Street<br />
-                      Artisan District, AC 12345
-                    </p>
-                  </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Saturday</span>
+                  <span className="font-medium">10:00 AM - 4:00 PM EST</span>
                 </div>
-
-                <div className="flex items-center space-x-4">
-                  <div className="bg-primary text-white p-3 rounded-full">
-                    <Clock className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="font-semibold">Hours</p>
-                    <p className="text-gray-600">
-                      Mon-Fri: 8AM - 8PM<br />
-                      Sat-Sun: 9AM - 6PM
-                    </p>
-                  </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Sunday</span>
+                  <span className="font-medium text-red-500">Closed</span>
                 </div>
               </div>
-            </Card>
-
-            {/* FAQ Quick Links */}
-            <Card className="p-6">
-              <h3 className="text-xl font-semibold mb-4">Quick Questions</h3>
-              <div className="space-y-3">
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">How far in advance should I order?</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Do you deliver to my area?</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">Can you accommodate allergies?</span>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <CheckCircle className="w-5 h-5 text-green-500" />
-                  <span className="text-gray-700">What payment methods do you accept?</span>
-                </div>
-              </div>
-            </Card>
-
-            {/* Emergency Contact */}
-            <Card className="p-6 bg-gradient-to-r from-primary to-accent-orange text-white">
-              <h3 className="text-xl font-semibold mb-4">Urgent Orders</h3>
-              <p className="mb-4">
-                Need a cake for today? Call us directly for last-minute orders!
-              </p>
-              <Button variant="secondary" size="lg" className="w-full">
-                <Phone className="w-5 h-5 mr-2" />
-                Call Now: (555) 123-4567
-              </Button>
-            </Card>
+            </motion.div>
           </motion.div>
         </div>
 
-        {/* Map Section */}
+        {/* FAQ Section */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.4 }}
+          transition={{ delay: 0.5 }}
           className="mt-16"
         >
-          <Card className="p-6">
-            <h3 className="text-xl font-semibold mb-4">Find Us</h3>
-            <div className="bg-gray-200 h-64 rounded-lg flex items-center justify-center">
-              <div className="text-center text-gray-500">
-                <MapPin className="w-12 h-12 mx-auto mb-2" />
-                <p>Interactive Map Coming Soon</p>
-                <p className="text-sm">123 Sweet Street, Artisan District, AC 12345</p>
-              </div>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Find quick answers to common questions about Handcrafted Haven
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {faqs.map((faq, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.1 }}
+                className="bg-white rounded-lg p-6 shadow-md"
+              >
+                <div className="flex items-start gap-3">
+                  <MessageCircle className="w-5 h-5 text-primary mt-1 flex-shrink-0" />
+                  <div>
+                    <h3 className="font-semibold text-gray-900 mb-2">{faq.question}</h3>
+                    <p className="text-gray-600 text-sm leading-relaxed">{faq.answer}</p>
+                  </div>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
+        {/* CTA Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.8 }}
+          className="mt-16 text-center"
+        >
+          <div className="bg-gradient-to-r from-primary to-accent-orange text-white rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-4">Ready to Start Your Journey?</h2>
+            <p className="text-lg mb-6 opacity-90">
+              Whether you're looking to discover unique handcrafted treasures or want to showcase your own creations, 
+              we're here to help you every step of the way.
+            </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Button variant="secondary" size="lg">
+                Browse Products
+              </Button>
+              <Button variant="outline" size="lg" className="border-white text-white hover:bg-white hover:text-primary">
+                Become an Artisan
+              </Button>
             </div>
-          </Card>
+          </div>
         </motion.div>
       </div>
 
